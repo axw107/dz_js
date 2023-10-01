@@ -2,7 +2,7 @@ let fs = require('fs');
 let inText;
 let newString = ""; //строка для (де)кодирования
 
-console.log(process.argv[3], process.argv[4])
+//console.log(process.argv[3], process.argv[4])
 
 //cod
 if (process.argv[2] == 'code') {
