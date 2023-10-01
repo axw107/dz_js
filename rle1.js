@@ -6,7 +6,7 @@ console.log(process.argv[3], process.argv[4])
 
 //cod
 if (process.argv[2] == 'code') {
-	inText = fs.readFileSync('input.txt');
+	inText = fs.readFileSync(process.argv[3]);
 	inText = inText.toString();
 	let i = 0, n = 1, j; 
 	//кодирование
@@ -23,7 +23,7 @@ if (process.argv[2] == 'code') {
 			n = 1;
 		} 
 	//запись в файл
-	fs.writeFile('code.txt', newString, err => {
+	fs.writeFile(process.argv[4], newString, err => {
 	  if (err) {
 		console.error(err);
 	  }
@@ -32,7 +32,7 @@ if (process.argv[2] == 'code') {
 
 //decode
 else {
-	inText = fs.readFileSync('code.txt');
+	inText = fs.readFileSync(process.argv[3]);
 	inText = inText.toString();
 	i = 0; 
 	// декодирование
@@ -45,7 +45,7 @@ else {
 			i++
 		} 
 	//запись в файл
-	fs.writeFile('decode.txt', newString, err => {
+	fs.writeFile(process.argv[4], newString, err => {
 	  if (err) {
 		console.error(err);
 	  }
