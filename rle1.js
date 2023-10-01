@@ -17,7 +17,7 @@ if (process.argv[2] == 'code') {
 				j++;
 				if (n == 255) break;
 			}
-			if (n <= 3) newString += inText.charAt(i).repeat(n);
+			if (n <= 3 && inText.charAt(i) != '#') newString += inText.charAt(i).repeat(n);
 			else newString += '#'+String.fromCharCode(n)+inText.charAt(i);
 			i += n;
 			n = 1;
