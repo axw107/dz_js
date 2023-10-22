@@ -1,0 +1,42 @@
+
+<html>
+	<head>
+		<title>my Hemming code</title>
+		<script>
+		function code() {
+			let inputMessage = document.getElementById("inpMessage").value;
+			//to do hemming cod
+			inputMessage = inputMessage.split('');
+			let cb1 = (inputMessage[0]%2 + inputMessage[2]%2 + inputMessage[3]%2) % 2;
+			let cb2 = (inputMessage[1]%2 + inputMessage[0]%2 + inputMessage[3]%2) % 2;
+			let cb3 = (inputMessage[1]%2 + inputMessage[2]%2 + inputMessage[3]%2) % 2;
+			document.getElementById('outputMessage').value = inputMessage.join('') + cb1 + cb2 + cb3;
+		}
+		function decode() {
+			let outputMessage = document.getElementById("outputMessage").value;
+			//to do hemming decod
+			outputMessage = outputMessage.split('');
+			let errorIsCircle1 = ((outputMessage[0]%2 + outputMessage[2]%2 + outputMessage[3]%2) % 2 != outputMessage[4]%2);
+			let errorIsCircle2 = (outputMessage[1]%2 + outputMessage[0]%2 + outputMessage[3]%2) % 2 != outputMessage[5]%2;
+			let errorIsCircle3 = (outputMessage[1]%2 + outputMessage[2]%2 + outputMessage[3]%2) % 2 != outputMessage[6]%2;
+			let originalMessage = outputMessage[0] + outputMessage[1] + outputMessage[2] + outputMessage[3]; 
+			if (errorIsCircle1 && errorIsCircle2) originalMessage = (1-outputMessage[0]%2) + outputMessage[1] + outputMessage[2] + outputMessage[3]; 
+			if (errorIsCircle2 && errorIsCircle3) originalMessage = outputMessage[0]+ (1-outputMessage[1]%2)+ outputMessage[2] + outputMessage[3]; 
+			if (errorIsCircle1 && errorIsCircle3) originalMessage = outputMessage[0] + outputMessage[1] +(1-outputMessage[2]%2) + outputMessage[3]; 
+			if (errorIsCircle1 && errorIsCircle2 && errorIsCircle3) originalMessage = outputMessage[0] + outputMessage[1] + + outputMessage[2] +(1-outputMessage[3]%2); 
+			document.getElementById('original message').value = originalMessage;
+			//console.log(errorIsCircle1, errorIsCircle2, errorIsCircle3);
+		}
+		</script>
+	</head>
+<body>
+	<h1>Hamming code </h1>
+	<h2>popova em (knmo 101)</h2>
+	<p><input type = "text" id = "inpMessage"/> input message, 4 bits</p>
+	<p><input type = 'button' value='Code' onClick = "code()" /></p>
+	<p><input type = 'text' id = 'outputMessage'/> coded message</p>
+	<p><input type = 'button' value='Check' onClick = "decode()"/></p>
+	<p><input type = 'text' id ='original message'/> original message</p>
+	<p></p>
+</body>
+</html>
