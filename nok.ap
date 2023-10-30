@@ -1,0 +1,21 @@
+//для_нахождения_нок_чисел_a_b_необходимо_в_12_13_строках_вместо_3_33_ввести_a_b_соответсвенно
+@1
+output 0
+jmp @end
+@2
+sub 0 1
+jmp @begin
+@3
+sub 1 0
+jmp @begin
+var
+input 0 3
+input 1 33
+begin
+cmp 0 1
+je @1
+more 0 1
+je @2
+more 1 0
+je @3
+end
